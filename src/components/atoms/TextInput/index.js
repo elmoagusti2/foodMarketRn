@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View, TextInput as TextI, } from 'react-native'
 import React from 'react'
 
-const TextInput = ({ title, isPassword = false }) => {
+const TextInput = ({ title,placeHolder, isPassword = false }) => {
   return (
     <View>
       <Text style={styles.label} >{title}</Text>
-      <TextI style={styles.input} placeholder='Type your email address' secureTextEntry={isPassword} />
+      <TextI style={styles.input} placeholder={placeHolder} secureTextEntry={isPassword} />
 
     </View>
   )

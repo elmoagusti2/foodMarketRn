@@ -1,9 +1,8 @@
 import { SafeAreaView, Text, View, useColorScheme } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 import { Store } from "../../assets";
 import { useEffect } from "react";
 
-const SplashScreen = ({navigation}) => {
+const SplashScreen = ({ navigation }) => {
     useEffect(() => {
         setTimeout(() => {
             navigation.replace('SignIn')
