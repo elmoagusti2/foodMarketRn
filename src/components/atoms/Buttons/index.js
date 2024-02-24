@@ -5,7 +5,7 @@ const Buttons = ({ title, color, textColor = 'black', onTap }) => {
   return (
     <View >
       <TouchableOpacity style={[styles.container, { backgroundColor: color }]} onPress={onTap}>
-        <Text style={{ color: textColor }} >{title}</Text>
+        <Text style={{ color: textColor, fontFamily: 'Poppins-Regular' }} >{title}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -18,6 +18,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: 'red',
     paddingVertical: 12,
-    alignItems: 'center'
+    alignItems: 'center',
   }
 })

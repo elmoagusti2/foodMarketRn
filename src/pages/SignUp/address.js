@@ -27,7 +27,10 @@ const SignUpAddress = ({ navigation }) => {
                     <Gap height={12}></Gap>
                     <Select title='City' options={options} selectedValue={selectedValue} onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} />
                     <Gap height={24}></Gap>
-                    <Buttons title='Sign Up Now' color='#FFC700' textColor='white' onTap={() => navigation.popToTop()} />
+                    <Buttons title='Sign Up Now' color='#FFC700' textColor='white' onTap={() => navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'SignUpFinish' }],
+                    })} />
                 </View>
             </ScrollView>
         </SafeAreaView>
