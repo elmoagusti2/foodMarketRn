@@ -1,10 +1,13 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { FoodCard, Gap } from '../../components'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 const Home = () => {
+  const Tab = createMaterialTopTabNavigator();
+
   return (
-    <SafeAreaView>
+    <ScrollView overScrollMode="never"  >
       <View style={styles.userSection}>
         <View>
           <Text style={styles.title}>FoodMarket</Text>
@@ -13,7 +16,15 @@ const Home = () => {
         <Image source={{ uri: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png' }}
           style={{ width: 70, height: 70, borderRadius: 20 }} />
       </View>
-    </SafeAreaView>
+      <ScrollView horizontal style={styles.topMenu} overScrollMode="never" showsHorizontalScrollIndicator={false}>
+        <Gap width={12} />
+        <FoodCard url='https://www.masakapahariini.com/wp-content/uploads/2023/01/resep-ayam-bakar-kalasan.jpg' title='Ayam bakar' star={1} />
+        <FoodCard url='https://asset.kompas.com/crops/kfOxHIz66v4BBpmhrxrq3JXosCA=/0x0:1000x667/780x390/data/photo/2020/12/17/5fdb3cd0c1525.jpg' title='Ikan bakar' />
+        <FoodCard url='https://img-global.cpcdn.com/recipes/686e2ca9be6a4126/1200x630cq70/photo.jpg' title='Bebek madura' />
+        <Gap width={12} />
+      </ScrollView>
+
+    </ScrollView>
   )
 }
 
@@ -37,4 +48,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     fontSize: 14,
   },
+  topMenu: {
+    paddingVertical: 12
+  }
 })
