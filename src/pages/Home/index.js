@@ -2,6 +2,7 @@ import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { FoodCard, Gap } from '../../components'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import Suggestion from './components/Suggestion.js';
 
 const Home = () => {
   const Tab = createMaterialTopTabNavigator();
@@ -23,7 +24,20 @@ const Home = () => {
         <FoodCard url='https://img-global.cpcdn.com/recipes/686e2ca9be6a4126/1200x630cq70/photo.jpg' title='Bebek madura' />
         <Gap width={12} />
       </ScrollView>
+      <View style={{ height: 294 }}>
+        <Tab.Navigator screenOptions={{
 
+          tabBarScrollEnabled: true,
+          tabBarIndicatorStyle: {
+            backgroundColor: '#020202',
+          },
+          tabBarStyle: { elevation: 0 }
+        }} >
+          <Tab.Screen name="New Taste" component={Suggestion} options={{ tabBarLabel: () => (<Text>New Taste</Text>) }} />
+          <Tab.Screen name="Popular" component={Suggestion} options={{ tabBarLabel: () => (<Text>Popular</Text>) }} />
+          <Tab.Screen name="Recommended" component={Suggestion} options={{ tabBarLabel: () => (<Text>Recommended</Text>) }} />
+        </Tab.Navigator>
+      </View>
     </ScrollView>
   )
 }
@@ -49,6 +63,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   topMenu: {
-    paddingVertical: 12
   }
 })
