@@ -7,13 +7,13 @@ const FoodList = ({
   image,
   title,
   price,
-  star = 3
+  star = 3.9
 }) => {
   const views = [];
   for (let i = 0; i < 5; i++) {
     views.push(
       <View key={i} >
-        <MaterialCommunityIcons name="star" color={star > i ? '#FFC700' : '#ECECEC'} size={16} />
+        <MaterialCommunityIcons name="star" color={Math.round(star) > i ? '#FFC700' : '#ECECEC'} size={16} />
       </View>
     );
   }
@@ -25,7 +25,7 @@ const FoodList = ({
         <Text numberOfLines={1} style={styles.price} >IDR {price ?? '0.00'}</Text>
       </View>
       {views}
-      <Text style={{ color: '#8D92A3'}}> {star}</Text>
+      <Text style={{ color: '#8D92A3' }}> {star}</Text>
     </View>
   )
 }
