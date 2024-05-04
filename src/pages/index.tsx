@@ -6,6 +6,7 @@ import SignUpFinish from "./SignUp/finish"
 import Home from "./Home"
 import Profile from "./Profile"
 import Cart from "./Cart"
+import DetailProduct from "./DetailProduct";
 export {
     SplashScreen,
     SignIn,
@@ -15,4 +16,5 @@ export {
     Home,
     Profile,
     Cart,
+    DetailProduct,
 }
