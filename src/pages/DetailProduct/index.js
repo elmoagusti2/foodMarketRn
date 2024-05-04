@@ -3,8 +3,10 @@ import React, { useState } from 'react'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import { TextStyle } from '../../components';
 
-const DetailProduct = ({image, title, description, indgredients, price = 0, star = 4 }) => {
+const DetailProduct = ({ image, title, description, indgredients, price = 2000, star = 4 }) => {
+  const navigation = useNavigation();
   const views = [];
   const [qty, setQty] = useState(1);
   const totalPrice = price * qty;
@@ -50,12 +52,12 @@ const DetailProduct = ({image, title, description, indgredients, price = 0, star
         </View>
         <View style={{ marginBottom: 20, flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 27 }}>
           <View>
-            <Text>Total price:</Text>
+            <Text style={[TextStyle.regular14]}>Total price:</Text>
             <Text style={{ fontWeight: 'bold', fontFamily: 'Poppins-Regular' }}>IDR {totalPrice}</Text>
           </View>
-          <View style={{ backgroundColor: '#FFC700', borderRadius: 10, height: 45, width: 163, alignItems: 'center', justifyContent: 'center' }}>
+          <TouchableOpacity onPress={()=> navigation.navigate('Transaction')} style={{ backgroundColor: '#FFC700', borderRadius: 10, height: 45, width: 163, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Add Cart</Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

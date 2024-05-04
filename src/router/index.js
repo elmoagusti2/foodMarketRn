@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Cart, Home, Profile, SignIn, SignUp, SignUpAddress, SignUpFinish, SplashScreen } from "../pages";
+import { Cart, DetailProduct, Home, Profile, SignIn, SignUp, SignUpAddress, SignUpFinish, SplashScreen, TransactionPage } from "../pages";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -43,6 +43,8 @@ const Router = () => {
             <stack.Screen name='SignUpAddress' component={SignUpAddress} options={{ headerShown: false }} />
             <stack.Screen name='SignUpFinish' component={SignUpFinish} options={{ headerShown: false }} />
             <stack.Screen name='Main' component={Main} options={{ headerShown: false }} />
+            <stack.Screen name='DetailProduct' component={DetailProduct} options={{ headerShown: false }} />
+            <stack.Screen name='Transaction' component={TransactionPage} options={{ headerShown: false }} />
         </stack.Navigator>
     );
 }

@@ -2,13 +2,16 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 const FoodList = ({
   image,
   title,
   price,
-  star = 3.9
+  star = 3.9,
 }) => {
+  const navigation = useNavigation();
   const views = [];
   for (let i = 0; i < 5; i++) {
     views.push(
@@ -18,7 +21,8 @@ const FoodList = ({
     );
   }
   return (
-    <View style={styles.card}>
+    <TouchableOpacity onPress={()=> navigation.navigate('DetailProduct')} activeOpacity={0.7} >
+      <View style={styles.card}>
       <Image source={{ uri: image ?? 'https://asset.kompas.com/crops/kfOxHIz66v4BBpmhrxrq3JXosCA=/0x0:1000x667/780x390/data/photo/2020/12/17/5fdb3cd0c1525.jpg' }} width={60} height={60} style={styles.image} />
       <View style={styles.content}>
         <Text numberOfLines={2} style={styles.title} >{title ?? 'Title'}</Text>
@@ -27,6 +31,7 @@ const FoodList = ({
       {views}
       <Text style={{ color: '#8D92A3' }}> {star}</Text>
     </View>
+    </TouchableOpacity>
   )
 }
 

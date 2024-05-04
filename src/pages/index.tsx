@@ -7,6 +7,7 @@ import Home from "./Home"
 import Profile from "./Profile"
 import Cart from "./Cart"
 import DetailProduct from "./DetailProduct";
+import TransactionPage from "./Transaction"
 export {
     SplashScreen,
     SignIn,
@@ -17,4 +18,5 @@ export {
     Profile,
     Cart,
     DetailProduct,
+    TransactionPage,
 }
