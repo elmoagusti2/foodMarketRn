@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { Header, TextStyle } from '../../components'
-import { useNavigation } from '@react-navigation/native'
+import { CommonActions, useNavigation } from '@react-navigation/native'
 import { ScrollView } from 'react-native-gesture-handler'
 
 const TransactionPage = () => {
@@ -59,7 +59,13 @@ const TransactionPage = () => {
 
                 </View>
             </ScrollView>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => navigate.dispatch(
+                CommonActions.reset({
+                    index: 0,
+                    routes: [{ name: 'TransactionFinish' }],
+                }),
+            )
+            }>
                 <Text style={TextStyle.bold14}>Checkout now</Text>
             </TouchableOpacity>
         </View>

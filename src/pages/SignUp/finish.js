@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { FInishSignUp } from '../../assets'
+import { FinishSignUp } from '../../assets'
 import { Buttons, Gap } from '../../components'
 
 const SignUpFinish = ({ navigation }) => {
     return (
         <View style={styles.container} >
-            <FInishSignUp />
+            <FinishSignUp />
             <Text style={styles.title}>Yeay! Completed</Text>
             <Text style={styles.subTitle} >Now you are able to order
                 some foods as a self-reward</Text>

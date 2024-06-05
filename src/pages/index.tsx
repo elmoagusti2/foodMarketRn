@@ -8,6 +8,7 @@ import Profile from "./Profile"
 import Cart from "./Cart"
 import DetailProduct from "./DetailProduct";
 import TransactionPage from "./Transaction"
+import TransactionFinish from "./Transaction/finish"
 export {
     SplashScreen,
     SignIn,
@@ -19,4 +20,5 @@ export {
     Cart,
     DetailProduct,
     TransactionPage,
+    TransactionFinish
 }

@@ -1,6 +1,8 @@
 import Store from './store.svg';
-import FInishSignUp from './finish_sign_up.svg'
+import FinishSignUp from './finish_sign_up.svg'
+import Success from './success.svg'
 export{
     Store,
-    FInishSignUp,
+    FinishSignUp,
+    Success,
 }
