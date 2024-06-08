@@ -5,7 +5,7 @@ import SignUpAddress from "./SignUp/address"
 import SignUpFinish from "./SignUp/finish"
 import Home from "./Home"
 import Profile from "./Profile"
-import Cart from "./Cart"
+import OrderHistory from "./OrderHistory"
 import DetailProduct from "./DetailProduct";
 import TransactionPage from "./Transaction"
 import TransactionFinish from "./Transaction/finish"
@@ -17,7 +17,7 @@ export {
     SignUpFinish,
     Home,
     Profile,
-    Cart,
+    OrderHistory,
     DetailProduct,
     TransactionPage,
     TransactionFinish

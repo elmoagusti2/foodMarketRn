@@ -14,7 +14,9 @@ const TransactionFinish = ({ navigation }) => {
             <Gap height={6} />
             <View style={{ width: 200 }} ><Buttons title='View My Order' color='#8D92A3' textColor='white' onTap={() => {
                 navigation.replace('Main');
-                navigation.navigate("Profile");
+                setTimeout(() => {
+                    navigation.navigate("Profile");
+                }, 500);
             }} /></View>
         </View>
     )

@@ -3,8 +3,9 @@ import React from 'react'
 import { FoodCard, Gap } from '../../components'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NewTaste, Popular, Recommended } from './components/Suggestion';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const Tab = createMaterialTopTabNavigator();
   return (
     <View style={{ flex: 1 }}>
@@ -13,8 +14,10 @@ const Home = () => {
           <Text style={styles.title}>FoodMarket</Text>
           <Text style={styles.subTitle} >Lets get some foods</Text>
         </View>
-        <Image source={{ uri: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png' }}
-          style={{ width: 70, height: 70, borderRadius: 20 }} />
+        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+          <Image source={{ uri: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png' }}
+            style={{ width: 70, height: 70, borderRadius: 20 }} />
+        </TouchableOpacity>
       </View>
       <View>
         <ScrollView horizontal style={styles.topMenu} overScrollMode="never" showsHorizontalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }}>
