@@ -19,6 +19,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Router from './router';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import FlashMessage from 'react-native-flash-message';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -30,6 +31,7 @@ function App(): JSX.Element {
     <NavigationContainer>{
       <Provider store={store}>
         <Router />
+        <FlashMessage position="top" />
       </Provider>
     }</NavigationContainer>
   );
