@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { OrderHistory, DetailProduct, Home, Profile, SignIn, SignUp, SignUpAddress, SignUpFinish, SplashScreen, TransactionFinish, TransactionPage } from "../pages";
+import { OrderHistory, DetailProduct, Home, Profile, SignIn, SignUp, SignUpAddress, SignUpFinish, SplashScreen, TransactionFinish, TransactionPage, Cart } from "../pages";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -18,7 +18,7 @@ function Main() {
                     <MaterialCommunityIcons name="home" color={color} size={size} />
                 ),
             }} />
-            <Tab.Screen name="OrderHistory" component={OrderHistory} options={{
+            <Tab.Screen name="Cart" component={Cart} options={{
                 headerShown: false,
                 tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="shopping" color={color} size={size} />
@@ -46,6 +46,7 @@ const Router = () => {
             <stack.Screen name='DetailProduct' component={DetailProduct} options={{ headerShown: false }} />
             <stack.Screen name='Transaction' component={TransactionPage} options={{ headerShown: false }} />
             <stack.Screen name='TransactionFinish' component={TransactionFinish} options={{ headerShown: false }} />
+            <stack.Screen name='OrderHistory' component={OrderHistory} options={{ headerShown: false }} />
         </stack.Navigator>
     );
 }
