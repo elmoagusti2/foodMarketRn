@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const axiosPost = async ({ url, data, token = '' }) => {
+export const axiosPost = async ({ url, data, token = '', config = {} }) => {
     try {
-        const response = await axios.post(url, data, {
+        const response = await axios.post(url, data, config ? config : {
             headers: {
                 Authorization: token,
                 'Content-Type': 'application/json',

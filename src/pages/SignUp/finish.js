@@ -11,7 +11,7 @@ const SignUpFinish = ({ navigation }) => {
             <Text style={styles.subTitle} >Now you are able to order
                 some foods as a self-reward</Text>
             <Gap height={12} />
-            <View style={{ width: 200 }} ><Buttons title='Find Foods' color='#FFC700' textColor='white' onTap={()=>navigation.replace('Main')
+            <View style={{ width: 200 }} ><Buttons title='Find Foods' color='#FFC700' textColor='white' onTap={() => navigation.replace('Main')
             } /></View>
         </View>
     )
@@ -30,11 +30,13 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: 'Poppins-Bold',
         fontSize: 20,
+        color: 'black',
         marginBottom: 6
     },
     subTitle: {
         fontFamily: 'Poppins-Regular',
         fontSize: 14,
+        color: '#8D92A3',
         textAlign: 'center'
     }
 })

@@ -6,17 +6,20 @@ const initStateRegister = {
     address: '',
     city: '',
     houseNumber: '',
-    phoneNumber: ''
+    phoneNumber: '',
+    roles: 'USER',
+    profile_photo_path: '',
 };
 
 const registerReducer = (state = initStateRegister, action) => {
     if (action.type === 'SET_REGISTER') {
         return {
             ...state,
-            nama: action.value.name,
+            name: action.value.name,
             email: action.value.email,
             password: action.value.password,
-            password_confirmation: action.value.password_confirmation
+            password_confirmation: action.value.password,
+            profile_photo_path: action.value.profile_photo_path
         }
     }
 
