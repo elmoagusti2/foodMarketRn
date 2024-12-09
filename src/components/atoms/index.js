@@ -4,6 +4,7 @@ import Gap from "./Gap";
 import Select from "./Select";
 import TextStyle from "./Textstyle";
 import showFlashMessage from "./Message";
+import Shimmers from "./shimmers";
 export {
     TextInput,
     Buttons,
@@ -11,4 +12,5 @@ export {
     Select,
     TextStyle,
     showFlashMessage,
+    Shimmers,
 };
