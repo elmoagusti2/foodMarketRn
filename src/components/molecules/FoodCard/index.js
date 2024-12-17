@@ -1,11 +1,13 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const FoodCard = ({
     url,
     title,
-    star = 3
+    star = 3,
+    onTap,
 }) => {
     const views = [];
     for (let i = 0; i < 5; i++) {
@@ -17,15 +19,18 @@ const FoodCard = ({
     }
 
     return (
-        <View style={styles.card} >
-            <Image source={{ uri: url }} resizeMode='cover' width={200} height={140} />
-            <View style={styles.content} >
-                <Text style={styles.title} >{title}</Text>
-                <View style={{ flexDirection: 'row' }}>
-                    {views}
+        <TouchableOpacity style={styles.card} onPress={onTap}>
+            <View style={styles.cardContent} >
+                <Image source={{ uri: url }} resizeMode='cover' width={200} height={140} />
+                <View style={styles.content} >
+                    <Text style={styles.title} >{title}</Text>
+                    <View style={{ flexDirection: 'row' }}>
+                        {views}
+                    </View>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
+
     )
 }
 
@@ -39,7 +44,15 @@ const styles = StyleSheet.create({
         height: 200,
         overflow: 'hidden',
         backgroundColor: 'white',
-        elevation: 25
+        elevation: 25,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    cardContent: {
+        width: '100%',
+        height: '100%',
+        flex: 1,
+        justifyContent: 'flex-end',
     },
     content: {
         width: '100%',
