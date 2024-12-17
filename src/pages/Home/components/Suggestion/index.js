@@ -1,8 +1,6 @@
-import NewTaste from "./new_taste";
-import Popular from "./popular";
-import Recommended from "./recommended";
+import ContentAll from "./content_all";
+import ContentByCategory from "./content_by_category";
 export {
-    NewTaste,
-    Popular,
-    Recommended,
+    ContentAll,
+    ContentByCategory,
 };

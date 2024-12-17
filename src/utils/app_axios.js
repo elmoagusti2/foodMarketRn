@@ -7,7 +7,7 @@ export const axiosPost = async ({ url, data, token = '', config = {} }) => {
                 Authorization: token,
                 'Content-Type': 'application/json',
             },
-            timeout: 30000,
+            timeout: 5000,
         });
         return { success: true, data: response.data };
     } catch (error) {
@@ -21,14 +21,14 @@ export const axiosPost = async ({ url, data, token = '', config = {} }) => {
     }
 };
 
-export const axiosGet = async ({ url, data, token = '' }) => {
+export const axiosGet = async ({ url, data, token = '', config = {} }) => {
     try {
-        const response = await axios.get(url, data, {
+        const response = await axios.get(url, data, config ? config : {
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: token,
                 'Content-Type': 'application/json',
             },
-            timeout: 30000,
+            timeout: 3000,
         });
         return { success: true, data: response.data };
     } catch (error) {
