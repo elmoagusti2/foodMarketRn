@@ -20,7 +20,7 @@ export const deleteString = (key) => {
 
 export const saveArray = (key, item) => {
     if (!Array.isArray(item))
-        throw new Error("item mus be array");
+        throw new Error("item must be array");
     storage.set(key, JSON.stringify(item));
 }
 
@@ -42,10 +42,29 @@ export const updateItemInArray = (key, id, updatedItem) => {
 }
 
 export const deleteItemFromArray = (key, id) => {
-    const array = [];
+    const array = getArray(key);
     const filteredArray = array.filter((item) => item.id !== id);
     saveArray(key, filteredArray);
 }
+
+export const addOrUpdateItemInArray = (key, item) => {
+    const array = getArray(key);
+    // Check if item exists in the array
+    const existingIndex = array.findIndex((data) => data.id === item.id);
+    if (existingIndex !== -1) {
+        // Item exists, update quantity
+        array[existingIndex] = {
+            ...array[existingIndex],
+            qty: (array[existingIndex].qty || 0) + (item.qty || 1), // Increment quantity
+            total_price: (array[existingIndex].total_price || 0) + (item.total_price || 1) // Increment quantity
+        };
+    } else {
+        // Item does not exist, add new item
+        array.push({ ...item, qty: item.qty || 1, total_price: item.total_price || 1 }); // Default qty to 1 if not provided
+    }
+    console.log(array);
+    saveArray(key, array);
+};
 
 // --USAGE--
 // const arrayKey = 'items';
@@ -71,3 +90,6 @@ export const deleteItemFromArray = (key, id) => {
 // **Delete an item from the array
 // deleteItemFromArray(arrayKey, 1);
 // console.log('Items After Deleting:', getArray(arrayKey));
+// // Add or update the item in storage
+// const item = { id: 1, name: "Apple", qty: 2 };
+// addOrUpdateItemInArray('cart_items', item);
