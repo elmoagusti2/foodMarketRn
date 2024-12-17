@@ -13,6 +13,7 @@ const ContentByCategory = ({ route, navigation }) => {
       {listMenu.filter((item) => item.types === type).map((item) => (<FoodList key={item.name} image={item.picture_path} title={item.name} showStar={false} price={item.price} onTap={
         () => navigation.navigate('DetailProduct',
           {
+            'id': item.id,
             'image': item.picture_path,
             'title': item.name,
             'description': item.description,

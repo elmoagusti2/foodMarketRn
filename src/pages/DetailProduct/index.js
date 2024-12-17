@@ -3,10 +3,14 @@ import React, { useState } from 'react'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-import { TextStyle } from '../../components';
+import { showFlashMessage, TextStyle } from '../../components';
+import numeral from 'numeral';
+import { addOrUpdateItemInArray, getArray } from '../../utils';
 
-const DetailProduct = ({ image, title, description, indgredients, price = 2000, star = 4 }) => {
+const DetailProduct = ({ route }) => {
   const navigation = useNavigation();
+  const { id, image, title = '-', description, ingredients, price, star = 3 } = route.params || {}; // Default value for `name` if it's undefined
+
   const views = [];
   const [qty, setQty] = useState(1);
   const totalPrice = price * qty;
@@ -19,6 +23,18 @@ const DetailProduct = ({ image, title, description, indgredients, price = 2000, 
     );
   }
   const navigator = useNavigation();
+
+  const onSubmit = () => {
+    try {
+      console.log({ id: id, image: image, title: title, price: price, total_price: totalPrice, qty: qty });
+      addOrUpdateItemInArray('cart', { id: id, image: image, title: title, price: price, total_price: totalPrice, qty: qty });
+      console.log(getArray('cart'));
+      navigator.goBack();
+      showFlashMessage(`${title} ditambahkan ke keranjang`, 'SUCCESS');
+    } catch (error) {
+      showFlashMessage(error, 'ERROR');
+    }
+  };
   return (
     <View style={styles.container}>
       <ImageBackground source={{ uri: image ?? 'https://asset.kompas.com/crops/kfOxHIz66v4BBpmhrxrq3JXosCA=/0x0:1000x667/780x390/data/photo/2020/12/17/5fdb3cd0c1525.jpg' }} style={styles.imageBackground}>
@@ -31,7 +47,7 @@ const DetailProduct = ({ image, title, description, indgredients, price = 2000, 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
             <View style={{ flexDirection: 'column', flex: 1 }} >
               <Text style={styles.title}>{title}</Text>
-              <View style={{ flexDirection: 'row' }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 {views}
                 <Text style={{}}> {star}</Text>
               </View>
@@ -39,7 +55,7 @@ const DetailProduct = ({ image, title, description, indgredients, price = 2000, 
             <View style={{ flexDirection: 'row', alignItems: 'center' }}  >
               <TouchableOpacity onPress={() => setQty(qty > 1 ? qty - 1 : qty)}><View style={{ padding: 2, borderRadius: 8, borderColor: 'black', borderWidth: 1, margin: 5 }} ><MaterialCommunityIcons name="minus" color={'black'} size={20} /></View>
               </TouchableOpacity>
-              <Text>{qty}</Text>
+              <Text style={{ color: 'black' }}>{qty}</Text>
               <TouchableOpacity onPress={() => setQty(qty + 1)}><View style={{ padding: 2, borderRadius: 8, borderColor: 'black', borderWidth: 1, margin: 5 }} ><MaterialCommunityIcons name="plus" color={'black'} size={20} /></View>
               </TouchableOpacity>
             </View>
@@ -48,15 +64,15 @@ const DetailProduct = ({ image, title, description, indgredients, price = 2000, 
           <Text style={styles.ingredient}>
             Ingredients:
           </Text>
-          <Text style={styles.description}>{indgredients}</Text>
+          <Text style={styles.description}>{ingredients}</Text>
         </View>
         <View style={{ marginBottom: 20, flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 27 }}>
           <View>
-            <Text style={[TextStyle.regular14]}>Total price:</Text>
-            <Text style={{ fontWeight: 'bold', fontFamily: 'Poppins-Regular' }}>IDR {totalPrice}</Text>
+            <Text style={[TextStyle.regular14, { color: '#8D92A3' }]}>Total price:</Text>
+            <Text style={[TextStyle.bold14, { color: 'black' }]}>IDR {numeral(totalPrice).format('0,0')}</Text>
           </View>
-          <TouchableOpacity onPress={()=> navigation.navigate('Transaction')} style={{ backgroundColor: '#FFC700', borderRadius: 10, height: 45, width: 163, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Add Cart</Text>
+          <TouchableOpacity onPress={onSubmit} style={{ backgroundColor: '#FFC700', borderRadius: 10, height: 45, width: 163, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ color: 'white' }}>Add Cart</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -94,7 +110,7 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 20,
     flex: 1,
     paddingHorizontal: 20,
-    paddingTop: 56
+    paddingTop: 52
   },
   back: {
     margin: 10

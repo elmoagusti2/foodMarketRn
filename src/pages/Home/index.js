@@ -37,6 +37,7 @@ const Home = ({ navigation }) => {
               onTap={
                 () => navigation.navigate('DetailProduct',
                   {
+                    'id': item.id,
                     'image': item.picture_path,
                     'title': item.name,
                     'description': item.description,
