@@ -15,7 +15,7 @@ const SignIn = ({ navigation }) => {
   const onSubmit = async () => {
     dispatch({ type: 'SET_LOADING', value: true });
     const response = await axiosPost({
-      url: 'http://10.3.9.142:8000/api/login',
+      url: 'http://192.168.1.4:8000/api/login',
       data: form,
     });
     if (response.success) {

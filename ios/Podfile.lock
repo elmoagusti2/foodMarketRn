@@ -516,7 +516,7 @@ PODS:
     - React-RCTImage
   - RNSVG (14.2.0):
     - React-Core
-  - RNVectorIcons (10.2.0):
+  - RNVectorIcons (10.3.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - SocketRocket (0.6.1)
@@ -784,7 +784,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: 0c8495e94f144a8d7b6bb510c22371377f3fca64
   RNScreens: c09986e2086f03fb9fcaefbff7126fd3a2bb1cf5
   RNSVG: 043f603fc70d48d289bc3f2ceedbb05ce2636f5c
-  RNVectorIcons: 4a5bf25944f3f8157ec86845a967fb10f29bceef
+  RNVectorIcons: e3266b0f5302024a3fb8175e1b2ff15780b29499
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: ef534101bb891fb09bae657417f34d399c1efe38
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
